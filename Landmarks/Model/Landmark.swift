@@ -9,12 +9,13 @@ import Foundation
 import SwiftUI
 import CoreLocation
 
+// https://raw.githubusercontent.com/ThrownToys/landmarkdata/refs/heads/main/landmarkData.json
 struct Landmark: Identifiable, Codable, Hashable {
-    var id: Int
-    var name: String
-    var park: String
-    var state: String
-    var description: String
+    let id: Int
+    let name: String
+    let park: String
+    let state: String
+    let description: String
     
     var isFavorite: Bool
     
