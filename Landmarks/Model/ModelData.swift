@@ -21,15 +21,23 @@ class ModelData {
 }
 
 extension Bundle {
-    func decode<T: Codable>(_ fileName: String) -> T {
-        guard let file = Self.main.url(forResource: fileName, withExtension: nil) else { fatalError() }
+    func decode<T: Decodable>(_ fileName: String) -> T {
+        let data: Data
         
-        guard let data = try? Data(contentsOf: file) else { fatalError()  }
-        let decoder = JSONDecoder()
+        guard let file = Self.main.url(forResource: fileName, withExtension: nil) else { fatalError("Couldn't find \(fileName) in main bundle.")
+        }
+        
         do {
+            data = try Data(contentsOf: file)
+        } catch {
+            fatalError("Couldn't load \(fileName) from main bundle:\n\(error)")
+        }
+        
+        do {
+            let decoder = JSONDecoder()
             return try decoder.decode(T.self, from: data)
         } catch {
-            fatalError()
+            fatalError("Couldn't parse \(fileName) as \(T.self):\n\(error)")
         }
     }
 }

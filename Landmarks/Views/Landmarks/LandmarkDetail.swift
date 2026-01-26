@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  LandmarkDetail.swift
 //  Landmarks
 //
 //  Created by seven on 2025/9/6.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct LandmarkDetail: View {
     @Environment(ModelData.self) var modelData
-    var landmark: Landmark
+    let landmark: Landmark
     
     var landmarkIndex: Int {
         modelData.landmarks.firstIndex(where: {$0.id == landmark.id})!
@@ -59,6 +59,6 @@ struct ContentView: View {
 
 #Preview {
     let modelData = ModelData()
-    ContentView(landmark: modelData.landmarks[0])
+    LandmarkDetail(landmark: modelData.landmarks[0])
         .environment(modelData)
 }

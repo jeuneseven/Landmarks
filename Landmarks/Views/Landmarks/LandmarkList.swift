@@ -23,15 +23,16 @@ struct LandmarkList: View {
                 Toggle("Favorites Only", isOn: $showFavoritesOnly)
                 
                 ForEach(filteredLandmarks) { landmark in
-                    NavigationLink {
-                        ContentView(landmark: landmark)
-                    } label: {
+                    NavigationLink(value: landmark) {
                         LandmarkRow(landmark: landmark)
                     }
                 }
             }
             .animation(.default, value: filteredLandmarks)
             .navigationTitle("Landmarks")
+            .navigationDestination(for: Landmark.self) { landmark in
+                LandmarkDetail(landmark: landmark)
+            }
         } detail: {
             Text("Select a Landmark")
         }
