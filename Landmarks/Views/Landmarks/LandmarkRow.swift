@@ -23,14 +23,6 @@ struct LandmarkRow: View {
     }
 }
 
-//#Preview("Turtle Rock") {
-//    LandmarkRow(landmark: landMarks[0])
-//}
-//
-//#Preview("Salmon") {
-//    LandmarkRow(landmark: landMarks[1])
-//}
-
 #Preview {
     Group {
         LandmarkRow(landmark: ModelData().landmarks[0])
