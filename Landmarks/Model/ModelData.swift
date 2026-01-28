@@ -11,6 +11,7 @@ import Observation
 @Observable
 class ModelData {
     var landmarks: [Landmark] = Bundle.main.decode("landmarkData.json")
+    var hikes: [Hike] = Bundle.main.decode("hikeData.json")
     
     var categories: [String: [Landmark]] {
         Dictionary(
